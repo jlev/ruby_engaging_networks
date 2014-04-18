@@ -3,7 +3,7 @@ require 'webmock/rspec'
 
 $LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
 
-require 'ruby_engaging_networks'
+require 'engaging_networks'
 
 RSpec.configure do |config|
   config.include WebMock::API

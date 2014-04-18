@@ -22,8 +22,17 @@ Gem::Specification.new do |s|
     ".document",
     "Gemfile",
     "LICENSE.txt",
+    "README.md",
     "Rakefile",
-    "lib/engaging_networks.rb"
+    "VERSION",
+    "engaging_networks.gemspec",
+    "lib/engaging_networks.rb",
+    "lib/engaging_networks/api.rb",
+    "lib/engaging_networks/base.rb",
+    "lib/engaging_networks/client.rb",
+    "lib/engaging_networks/version.rb",
+    "spec/engaging_networks_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/jlev/engaging_networks"
   s.licenses = ["MIT"]
@@ -40,6 +49,11 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 2.0.1"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
+      s.add_development_dependency(%q<pry>, [">= 0"])
+      s.add_development_dependency(%q<pry-debugger>, [">= 0"])
+      s.add_development_dependency(%q<guard>, [">= 0"])
+      s.add_development_dependency(%q<guard-rspec>, [">= 0"])
       s.add_runtime_dependency(%q<vertebrae>, [">= 0"])
     else
       s.add_dependency(%q<engaging_networks>, [">= 0"])
@@ -48,6 +62,11 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, ["~> 1.0"])
       s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
+      s.add_dependency(%q<pry>, [">= 0"])
+      s.add_dependency(%q<pry-debugger>, [">= 0"])
+      s.add_dependency(%q<guard>, [">= 0"])
+      s.add_dependency(%q<guard-rspec>, [">= 0"])
       s.add_dependency(%q<vertebrae>, [">= 0"])
     end
   else
@@ -57,6 +76,11 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, ["~> 1.0"])
     s.add_dependency(%q<jeweler>, ["~> 2.0.1"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
+    s.add_dependency(%q<pry>, [">= 0"])
+    s.add_dependency(%q<pry-debugger>, [">= 0"])
+    s.add_dependency(%q<guard>, [">= 0"])
+    s.add_dependency(%q<guard-rspec>, [">= 0"])
     s.add_dependency(%q<vertebrae>, [">= 0"])
   end
 end
