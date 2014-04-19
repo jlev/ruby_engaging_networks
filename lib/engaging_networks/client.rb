@@ -4,15 +4,15 @@ module EngagingNetworks
   class Client < API
 
     def campaign
-      @campaign ||= EngagingeNetworks::Campaign.new(client: self)
+      @campaign ||= EngagingNetworks::Campaign.new(client: self)
     end
     
     def supporter
-      @supporter ||= EngagingeNetworks::Supporter.new(client: self)
+      @supporter ||= EngagingNetworks::Supporter.new(client: self)
     end
 
     def action
-      @action ||= EngagingeNetworks::Action.new(client: self)
+      @action ||= EngagingNetworks::Action.new(client: self)
     end
 
   end
