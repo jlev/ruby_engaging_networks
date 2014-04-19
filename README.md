@@ -6,7 +6,10 @@ A ruby binding for the Engaging Networks API
 
 ```ruby
 
-
+require 'engaging_networks'
+en = EngagingNetworks.new({token: 'TOKEN'})
+campaign = en.campaign.get 'CAMPAIGN_ID'
+supporter = en.supporter.get 'email@example.com'
 
 ```
 

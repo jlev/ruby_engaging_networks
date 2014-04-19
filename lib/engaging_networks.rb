@@ -13,8 +13,8 @@ end
 require 'engaging_networks/version'
 require 'engaging_networks/client'
 require 'engaging_networks/base'
-# require 'engaging_networks/campaign'
-# require 'engaging_networks/supporter'
+require 'engaging_networks/campaign'
+require 'engaging_networks/supporter'
 # require 'engaging_networks/action'
 
 # require 'active_support/all'
