@@ -1,4 +1,4 @@
-require 'engaging_networks/request/token'
+require 'engaging_networks/request/multitoken'
 
 module EngagingNetworks
   class API < Vertebrae::API
@@ -13,20 +13,20 @@ module EngagingNetworks
     end
 
     def setup
-      puts connection.options
-
       connection.stack do |builder|
         #request middleware first, in order of importance
-        builder.use EngagingNetworks::Request::TokenAuthentication,
-          :token => connection.configuration.options[:token]
+        builder.use EngagingNetworks::Request::MultiTokenAuthentication,
+          :public_token => connection.configuration.options[:public_token],
+          :private_token => connection.configuration.options[:private_token]
 
         builder.use Faraday::Request::Multipart
 
         #response  middleware second, in reverse order of importance
         builder.use FaradayMiddleware::ParseXml,  :content_type => /\bxml$/
 
+        builder.use Faraday::Request::Logger if ENV['DEBUG']
         builder.use Faraday::Response::Logger if ENV['DEBUG']
-
+        
         # builder.use  EngagingNetworks::Response::RaiseError
         builder.adapter connection.configuration.adapter
       end
