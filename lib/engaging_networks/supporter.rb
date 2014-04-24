@@ -5,7 +5,7 @@ module EngagingNetworks
     end
 
     def get(email)
-      client.get_request(data_path, {service: service, email: email}, {token_type: 'private'})
+      client.get_request(data_path, {service: service, email: email, token_type: 'private'})
     end
   end
 end

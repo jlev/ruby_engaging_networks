@@ -4,19 +4,21 @@ module EngagingNetworks
       # Request middleware to always pass public/private token as url parameter
 
       def call(env)
-        #decode existing params
-        params = URI.decode_www_form(env[:url].query)
-
-        pry
+        #decode params
+        params = URI.decode_www_form(env[:url].query).to_h
+        token_type = params['token_type']
 
         #insert necessary token
-        if @options.token_type == 'private'
-          params << ["token", @private_token]
-        elif @options.token_type == 'public'
-          params << ["token", @public_token]
+        if token_type.equal? 'private'
+          params["token"] = @private_token
+        else token_type.equal? 'public'
+          params["token"] = @public_token
         end
 
-        #return to env
+        #remove token_type
+        params.delete('token_type')
+
+        #encode and return to env
         env[:url].query = URI.encode_www_form(params)
 
         @app.call env
