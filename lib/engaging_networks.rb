@@ -17,5 +17,8 @@ require 'engaging_networks/campaign'
 require 'engaging_networks/supporter'
 # require 'engaging_networks/action'
 
+require 'engaging_networks/response/wrapper'
+require 'engaging_networks/response/collection'
+
 # require 'active_support/all'
 # require 'action_kit_rest/railties' if defined? Rails

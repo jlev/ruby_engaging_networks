@@ -3,6 +3,11 @@ require 'engaging_networks/request/multitoken'
 module EngagingNetworks
   class API < Vertebrae::API
 
+    def request_with_wrapper( *args )
+      EngagingNetworks::Response::Wrapper.new( request_without_wrapper( *args ) )
+    end
+    alias_method_chain :request, :wrapper
+
     def default_options
       {
         user_agent: 'EngagingNetworksGem',
@@ -23,10 +28,9 @@ module EngagingNetworks
 
         #response  middleware second, in reverse order of importance
         builder.use FaradayMiddleware::ParseXml,  :content_type => /\bxml$/
-
-        builder.use Faraday::Request::Logger if ENV['DEBUG']
-        builder.use Faraday::Response::Logger if ENV['DEBUG']
         
+        builder.use Faraday::Response::Logger if ENV['DEBUG']
+
         # builder.use  EngagingNetworks::Response::RaiseError
         builder.adapter connection.configuration.adapter
       end
