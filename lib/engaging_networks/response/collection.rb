@@ -7,9 +7,13 @@ module EngagingNetworks
 
       attr_reader :objects
 
-      def initialize(meta, objects)
-        @meta = meta
-        @objects = objects
+      def initialize(data)
+        #todo, inject over rows / columns
+        @objects = data['EaRow']['EaColumn'].inject({}) do |hash, item|
+          hash[item['name']] = item['__content__']
+          #todo, cast based on item['type']?
+          hash
+        end
       end
 
       def each(&block)
