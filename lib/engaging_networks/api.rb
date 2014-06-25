@@ -12,7 +12,6 @@ module EngagingNetworks
       {
         user_agent: 'EngagingNetworksGem',
         host: 'e-activist.com',
-        prefix: '/ea-dataservice',
         content_type: 'multipart/form-data'
       }
     end

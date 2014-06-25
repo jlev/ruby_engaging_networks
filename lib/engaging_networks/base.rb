@@ -21,11 +21,15 @@ module EngagingNetworks
     # end
 
     def import_path
-      "import.service"
+      "/ea-dataservice/import.service"
     end
 
     def data_path
-      "data.service"
+      "/ea-dataservice/data.service"
+    end
+
+    def action_path
+      "/ea-action/action"
     end
 
     private
