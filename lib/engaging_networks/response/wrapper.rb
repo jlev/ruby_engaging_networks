@@ -13,7 +13,7 @@ module EngagingNetworks
       def initialize(response)
         @response    = response
 
-        if response.body.has_key?('EaData')
+        if response.body.respond_to?('has_key') && response.body.has_key?('EaData')
           @kind = :collection
           @obj = EngagingNetworks::Response::Collection.new(response.body['EaData'])
         else

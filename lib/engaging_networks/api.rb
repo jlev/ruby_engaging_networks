@@ -25,12 +25,12 @@ module EngagingNetworks
 
         builder.use Faraday::Request::Multipart
 
-        #response  middleware second, in reverse order of importance
+        #response middleware second, in reverse order of importance
         builder.use FaradayMiddleware::ParseXml,  :content_type => /\bxml$/
         
         builder.use Faraday::Response::Logger if ENV['DEBUG']
 
-        # builder.use  EngagingNetworks::Response::RaiseError
+        builder.use EngagingNetworks::Response::RaiseError
         builder.adapter connection.configuration.adapter
       end
     end

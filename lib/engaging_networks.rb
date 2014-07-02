@@ -18,6 +18,7 @@ require 'engaging_networks/supporter'
 # require 'engaging_networks/action'
 
 require 'engaging_networks/response/wrapper'
+require 'engaging_networks/response/raise_error'
 require 'engaging_networks/response/collection'
 
 # require 'active_support/all'
