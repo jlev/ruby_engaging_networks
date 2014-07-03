@@ -36,7 +36,7 @@ module EngagingNetworks
       post_params = post_params.merge(client_params)
       post_params = post_params.merge(action_hash)
 
-      client.post_request(action_path, post_params)
+      client.post_request_with_get_params(action_path, {'format'=>'json'}, post_params)
     end
 
   end
