@@ -1,3 +1,6 @@
+require 'json'
+require 'nokogiri'
+
 module EngagingNetworks
   class Action < Base
     # individual get unavailable
@@ -36,7 +39,14 @@ module EngagingNetworks
       post_params = post_params.merge(client_params)
       post_params = post_params.merge(action_hash)
 
-      client.post_request_with_get_params(action_path, {'format'=>'json'}, post_params)
+      # call post request, with get param ?format=json
+      body = client.post_request_with_get_params(action_path, {'format'=>'json'}, post_params).body
+
+      # parse json for first form field, apisuccess div
+      success_div = JSON.parse(body)['pages'][0]['form']['fields'][0]['value']
+      # TODO, this seems really fragile...
+      Nokogiri::HTML(success_div).css('#apisuccess').text == "success"
+      # returns boolean
     end
 
   end
