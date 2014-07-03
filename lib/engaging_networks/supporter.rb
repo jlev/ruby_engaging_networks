@@ -1,15 +1,22 @@
 module EngagingNetworks
   class Supporter < Base
 
-    def exists?(email)
+    def data(email)
       # data.service only returns Y/N values on which fields contain data, not actual data contained
-      s = client.get_request(data_path, {service: 'SupporterData', email: email, token_type: 'public'})
-      return s.obj.supporterExists == 'Y'
+      client.get_request(data_path, {service: 'SupporterData', email: email,
+          token_type: EngagingNetworks::Request::MultiTokenAuthentication::PUBLIC})
+    end
+
+    def exists?(email)
+      return data(email).obj.supporterExists == 'Y'
     end
 
     def export(startDate)
-      # startDate must be within last 45 days
-      client.get_request(export_path, {startDate: startDate, token_type: 'private'})
+      # startDate must be MMDDYYY and within last 45 days
+      client.get_request(export_path, {startDate: startDate,
+          token_type: EngagingNetworks::Request::MultiTokenAuthentication::PRIVATE})
+
+      # TODO, filter for specific fields
     end
   end
 end

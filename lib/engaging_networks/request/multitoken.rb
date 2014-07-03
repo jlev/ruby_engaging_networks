@@ -1,24 +1,29 @@
 module EngagingNetworks
   module Request
     class MultiTokenAuthentication < Faraday::Middleware
-      # Request middleware to always pass public/private token as url parameter
+      PUBLIC = 1
+      PRIVATE = 2
+
+      # Request middleware looks for token_type in http params, replaces with actual token value
 
       def call(env)
-        #decode params
+        # decode url param string to hash
         params = URI.decode_www_form(env[:url].query).to_h
-        token_type = params['token_type']
+        token_type = params['token_type'].to_i #because it got stringified in the form
 
-        #insert necessary token
-        if token_type.equal? 'private'
+        # insert necessary token
+        if token_type == MultiTokenAuthentication::PRIVATE
           params["token"] = @private_token
-        else token_type.equal? 'public'
+        elsif token_type == MultiTokenAuthentication::PUBLIC
           params["token"] = @public_token
+        else
+          raise ArgumentError, "invalid token_type #{token_type}"
         end
 
-        #remove token_type
+        # remove token_type
         params.delete('token_type')
 
-        #encode and return to env
+        # encode and return to env
         env[:url].query = URI.encode_www_form(params)
 
         @app.call env

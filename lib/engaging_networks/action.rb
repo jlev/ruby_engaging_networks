@@ -3,7 +3,8 @@ module EngagingNetworks
     # individual get unavailable
     # need to export and search actions
     def export(startDate)
-      client.get_request(data_path, {startDate: startDate, token_type: 'private'})
+      client.get_request(data_path, {startDate: startDate,
+          token_type: EngagingNetworks::Request::MultiTokenAuthentication::PRIVATE})
     end
 
     def create(clientId, campaignId, formId, action_hash)
@@ -27,7 +28,8 @@ module EngagingNetworks
       # clientId, campaignId, formId
       client_params = {'ea.client.id' => clientId,
                        'ea.campaign.id' => campaignId,
-                       'ea.form.id' => formId}
+                       'ea.form.id' => formId, 
+                       'token_type' => EngagingNetworks::Request::MultiTokenAuthentication::PRIVATE}
 
       # merge params hashes
       p = {}
