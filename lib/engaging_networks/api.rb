@@ -16,6 +16,12 @@ module EngagingNetworks
       }
     end
 
+    def extract_data_from_params(params)
+      # wrapper method from actionkit_rest
+      # stub it out
+      params
+    end
+
     def setup
       connection.stack do |builder|
         #request middleware first, in order of importance
@@ -24,6 +30,7 @@ module EngagingNetworks
           :private_token => connection.configuration.options[:private_token]
 
         builder.use Faraday::Request::Multipart
+        builder.use Faraday::Request::UrlEncoded
 
         #response middleware second, in reverse order of importance
         builder.use FaradayMiddleware::ParseXml,  :content_type => /\bxml$/

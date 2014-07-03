@@ -15,7 +15,7 @@ require 'engaging_networks/client'
 require 'engaging_networks/base'
 require 'engaging_networks/campaign'
 require 'engaging_networks/supporter'
-# require 'engaging_networks/action'
+require 'engaging_networks/action'
 
 require 'engaging_networks/response/wrapper'
 require 'engaging_networks/response/raise_error'
