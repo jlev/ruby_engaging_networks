@@ -1,13 +1,15 @@
 module EngagingNetworks
   class Base < Vertebrae::Model
 
-    def list(filters = {})
-      client.get_request(data_path, {service: service}.merge(filters))
-    end
+    # examples from actionkit_rest, but sadly the EN API doesn't have generic endpoints
 
-    def get(id)
-      client.get_request(data_path, {service: service, id: id})
-    end
+    # def list(filters = {})
+    #   client.get_request(data_path, {service: service}.merge(filters))
+    # end
+
+    # def get(id)
+    #   client.get_request(data_path, {service: service, id: id})
+    # end
 
     # def create(params)
     #   resp = client.post_json_request(import_path, params)
@@ -28,18 +30,13 @@ module EngagingNetworks
       "/ea-dataservice/data.service"
     end
 
+    def export_path
+      "/ea-dataservice/export.service"
+    end
+
     def action_path
       "/ea-action/action"
     end
 
-    private
-
-    # def extract_id_from_response(resp)
-    #   extract_id_from_location(resp.response.headers["location"])
-    # end
-
-    # def extract_id_from_location(location)
-    #   location.scan(/\/(\d+)\/$/).first.first
-    # end
   end
 end

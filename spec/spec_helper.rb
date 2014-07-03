@@ -18,15 +18,15 @@ RSpec.configure do |config|
 end
 
 def stub_get(path)
-  stub_action_kit_request(:get, path)
+  stub_request(:get, path)
 end
 
 def stub_post(path)
-  stub_action_kit_request(:post, path)
+  stub_request(:post, path)
 end
 
 def stub_put(path)
-  stub_action_kit_request(:put, path)
+  stub_request(:put, path)
 end
 
 def stub_request(method, path)

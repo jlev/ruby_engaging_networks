@@ -1,7 +1,10 @@
 module EngagingNetworks
   class Campaign < Base
-    def service
-      'EaCampaignInfo'
+    def get(campaignId)
+      client.get_request(data_path, {service: 'EaCampaignInfo', campaignId: campaignId, token_type: 'public'})
     end
+
+    # TODO, search by campaign name
+
   end
 end
