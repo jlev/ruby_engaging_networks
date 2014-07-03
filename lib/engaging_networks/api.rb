@@ -12,14 +12,16 @@ module EngagingNetworks
       {
         user_agent: 'EngagingNetworksGem',
         host: 'e-activist.com',
-        content_type: 'multipart/form-data'
+        content_type: 'application/x-www-form-urlencoded'
       }
     end
 
-    def extract_data_from_params(params)
-      # wrapper method from actionkit_rest
-      # stub it out
-      params
+    def extract_data_from_params(params) # :nodoc:
+      if params.has_key?('data') && params['data'].present?
+        return params['data']
+      else
+        return params
+      end
     end
 
     def setup
@@ -41,5 +43,6 @@ module EngagingNetworks
         builder.adapter connection.configuration.adapter
       end
     end
+
   end
 end

@@ -28,25 +28,15 @@ module EngagingNetworks
       # clientId, campaignId, formId
       client_params = {'ea.client.id' => clientId,
                        'ea.campaign.id' => campaignId,
-                       'ea.form.id' => formId, 
-                       'token_type' => EngagingNetworks::Request::MultiTokenAuthentication::PRIVATE}
+                       'ea.form.id' => formId}
 
       # merge params hashes
-      p = {}
-      p = p.merge(ajax_form_params)
-      p = p.merge(client_params)
-      p = p.merge(action_hash)
+      post_params = {}
+      post_params = post_params.merge(ajax_form_params)
+      post_params = post_params.merge(client_params)
+      post_params = post_params.merge(action_hash)
 
-      #add token_type to action_path, for MultiTokenAuthentication
-      u = "#{action_path}?token_type=private"
-
-      # send post
-      begin
-        client.post_request(u, p)
-      rescue => exception
-        puts ''
-        puts exception.backtrace
-      end
+      client.post_request(action_path, post_params)
     end
 
   end
