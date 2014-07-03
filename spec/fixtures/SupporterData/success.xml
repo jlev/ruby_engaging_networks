@@ -1,0 +1,21 @@
+<EaData>
+  <EaRow>
+    <EaColumn name="clientId" type="xs:int">132</EaColumn>
+    <EaColumn name="email" type="xs:string">ryan@grassriots.com</EaColumn>
+    <EaColumn name="supporterExists" type="xs:string">Y</EaColumn>
+    <EaColumn name="Title" type="xs:string">N</EaColumn>
+    <EaColumn name="First Name" type="xs:string">Y</EaColumn>
+    <EaColumn name="Middle Name" type="xs:string">N</EaColumn>
+    <EaColumn name="Last Name" type="xs:string">Y</EaColumn>
+    <EaColumn name="Address 1" type="xs:string">N</EaColumn>
+    <EaColumn name="Address 2" type="xs:string">N</EaColumn>
+    <EaColumn name="Address 3" type="xs:string">N</EaColumn>
+    <EaColumn name="City" type="xs:string">Y</EaColumn>
+    <EaColumn name="Region" type="xs:string">N</EaColumn>
+    <EaColumn name="Email Address" type="xs:string">Y</EaColumn>
+    <EaColumn name="Postcode" type="xs:string">N</EaColumn>
+    <EaColumn name="Country" type="xs:string">N</EaColumn>
+    <EaColumn name="Password" type="xs:string">N</EaColumn>
+    <EaColumn name="Appeal Code" type="xs:string">N</EaColumn>
+  </EaRow>
+</EaData>

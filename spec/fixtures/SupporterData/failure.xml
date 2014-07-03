@@ -1,0 +1,7 @@
+<EaData>
+  <EaRow>
+    <EaColumn name="clientId" type="xs:int">132</EaColumn>
+    <EaColumn name="email" type="xs:string">fake@example.com</EaColumn>
+    <EaColumn name="supporterExists" type="xs:string">N</EaColumn>
+  </EaRow>
+</EaData>

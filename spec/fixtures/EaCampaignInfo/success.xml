@@ -1,0 +1,10 @@
+<EaData>
+  <EaRow>
+    <EaColumn name="clientId" type="xs:int">132</EaColumn>
+    <EaColumn name="campaignId" type="xs:int">26967</EaColumn>
+    <EaColumn name="campaignStatus" type="xs:string">Live</EaColumn>
+    <EaColumn name="campaignName" type="xs:string">API Test Campaign</EaColumn>
+    <EaColumn name="campaignExportName" type="xs:string">API Test Campaign</EaColumn>
+    <EaColumn name="description" type="xs:string"></EaColumn>
+  </EaRow>
+</EaData>

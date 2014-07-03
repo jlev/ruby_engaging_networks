@@ -20,9 +20,12 @@ module EngagingNetworks
           if data.is_a? Array
             @kind = :collection
             @obj = EngagingNetworks::Response::Collection.new(data)
-          else
+          elsif data.respond_to?('has_key?') && data.has_key?('EaRow')
             @kind = :object
             @obj = EngagingNetworks::Response::Object.new(data['EaRow'])
+          else
+            @kind = :empty
+            @obj = nil
           end
         end
       end
