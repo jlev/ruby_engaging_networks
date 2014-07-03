@@ -8,16 +8,15 @@ module EngagingNetworks
       attr_reader :objects
 
       def initialize(data)
-        #todo, inject over rows / columns
         @objects = data['EaRow']['EaColumn'].inject({}) do |hash, item|
           hash[item['name']] = item['__content__']
-          #todo, cast based on item['type']?
+          # TODO cast based on item['type']?
           hash
         end
       end
 
       def each(&block)
-        # todo handle pagination somehow!
+        # TODO handle pagination somehow!
         objects.each do |o|
           block.call(o)
         end

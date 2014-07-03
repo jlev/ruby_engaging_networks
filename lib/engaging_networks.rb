@@ -20,6 +20,7 @@ require 'engaging_networks/supporter'
 require 'engaging_networks/response/wrapper'
 require 'engaging_networks/response/raise_error'
 require 'engaging_networks/response/collection'
+require 'engaging_networks/response/object'
 
 # require 'active_support/all'
 # require 'action_kit_rest/railties' if defined? Rails

@@ -11,14 +11,19 @@ module EngagingNetworks
       def_delegators :body, :empty?, :size, :include?, :length, :to_a, :first, :flatten, :include?, :keys, :[]
 
       def initialize(response)
-        @response    = response
+        @response = response
 
-        if response.body.respond_to?('has_key') && response.body.has_key?('EaData')
-          @kind = :collection
-          @obj = EngagingNetworks::Response::Collection.new(response.body['EaData'])
-        else
-          @kind = :object
-          @obj = response.body
+        if response.body.respond_to?('has_key?') && response.body.has_key?('EaData')
+          data = response.body['EaData']
+
+          # check for multiple returned rows
+          if data.is_a? Array
+            @kind = :collection
+            @obj = EngagingNetworks::Response::Collection.new(data)
+          else
+            @kind = :object
+            @obj = EngagingNetworks::Response::Object.new(data['EaRow'])
+          end
         end
       end
 
@@ -66,14 +71,14 @@ module EngagingNetworks
         status.to_i >= 500 && status.to_i < 600
       end
 
-      # Lookup an attribute from the body if hash, otherwise behave like array index.
+      # Lookup an attribute from the object if hash, otherwise behave like array index.
       # Convert any key to string before calling.
       #
       def [](key)
-        if self.body.is_a?(Array)
-          self.body[key]
+        if self.obj.is_a?(Array)
+          self.obj[key]
         else
-          self.body.send(:"#{key}")
+          self.obj.send(:"#{key}")
         end
       end
 
