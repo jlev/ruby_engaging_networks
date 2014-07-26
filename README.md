@@ -2,6 +2,8 @@
 
 A ruby binding for the Engaging Networks API
 
+[![Build Status](https://travis-ci.org/controlshift/ruby_engaging_networks.svg)](https://travis-ci.org/controlshift/ruby_engaging_networks)
+
 ## Usage
 
 ```ruby
