@@ -9,7 +9,7 @@ module EngagingNetworks
       def call(env)
         # decode url param string to hash
         if env[:url].query
-          params = URI.decode_www_form(env[:url].query).to_h
+          params = Hash[URI.decode_www_form(env[:url].query)]
         else
           params = {}
         end
