@@ -15,6 +15,14 @@ RSpec.configure do |config|
     WebMock.reset!
   end
 
+  config.mock_with :rspec do |mocks|
+    mocks.syntax = [:should, :expect]
+  end
+
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+
 end
 
 def stub_get(path)

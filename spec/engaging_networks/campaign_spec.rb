@@ -4,7 +4,7 @@ describe EngagingNetworks::Campaign do
   before(:each) do
     @en = EngagingNetworks.new(public_token: 'TEST_PUBLIC_TOKEN', private_token: 'TEST_PRIVATE_TOKEN')
 
-    logger = mock
+    logger = double
     logger.stub(:debug).and_return(true)
 
     EngagingNetworks.stub(:logger).and_return(logger)
