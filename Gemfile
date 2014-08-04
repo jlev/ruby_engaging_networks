@@ -1,5 +1,7 @@
 source "http://rubygems.org"
-gem 'vertebrae'
+gem 'vertebrae', ">= 0.2.8"
+gem 'activesupport'
+gem 'activemodel'
 
 
 group :development do

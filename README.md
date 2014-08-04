@@ -21,6 +21,13 @@ campaign.obj
    "campaignExportName"=>"Test Campaign",
    "description"=>nil}>
 
+action = en.campaign.duplicate reference_name: 'foo',
+                      format_name: 'API New Supporter Template',
+                      csv_string: 'Email,First Name,Last Name,City,Country Code,Country Name,Postal Code,Mobile Phone,Language,Originating Action',
+                      csv_file_name: 'upload.csv'
+action.job_id
+=> '1234'
+
 en.supporter.exists? 'email@example.com'
 => false
 

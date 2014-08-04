@@ -10,17 +10,22 @@ module EngagingNetworks
   end
 end
 
+require 'active_support/all'
+require 'active_model'
+require 'stringio'
+
 require 'engaging_networks/version'
 require 'engaging_networks/client'
 require 'engaging_networks/base'
 require 'engaging_networks/campaign'
 require 'engaging_networks/supporter'
 require 'engaging_networks/action'
+require 'engaging_networks/action_model'
+require 'engaging_networks/duplicate_action'
 
 require 'engaging_networks/response/wrapper'
 require 'engaging_networks/response/raise_error'
 require 'engaging_networks/response/collection'
 require 'engaging_networks/response/object'
 
-# require 'active_support/all'
-# require 'action_kit_rest/railties' if defined? Rails
+
