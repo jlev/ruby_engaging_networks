@@ -35,7 +35,11 @@ Duplicate a campaign
 action = en.campaign.duplicate reference_name: 'foo',
                       format_name: 'API New Supporter Template',
                       csv_string: 'Email,First Name,Last Name,City,Country Code,Country Name,Postal Code,Mobile Phone,Language,Originating Action',
-                      csv_file_name: 'upload.csv'
+                      csv_file_name: 'upload.csv',
+                      segment_id: 'Test Segment Id',
+                      segment_name: 'Test Segment',
+                      template_campaign_id: 26967,
+                      new_campaign_reference_name: 'New Test Campaign4'
 action.job_id
 => '1234'
 ```
