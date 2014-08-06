@@ -30,7 +30,14 @@ module EngagingNetworks
     end
 
     def search(campaign_name)
-      client.get_request(data_path, {service: 'EaCampaignInfo', token_type: EngagingNetworks::Request::MultiTokenAuthentication::PUBLIC})
+      response = client.get_request(data_path, {service: 'EaCampaignInfo', token_type: EngagingNetworks::Request::MultiTokenAuthentication::PUBLIC})
+      if response.obj.is_a? EngagingNetworks::Response::Collection
+        response.obj.objects.find { |elem| elem.campaignName == campaign_name }
+      elsif response.obj.is_a? EngagingNetworks::Response::Object
+        response.obj ? response.obj.campaignName == campaign_name : nil
+      else
+        nil
+      end
     end
     
     # TODO, search by campaign name

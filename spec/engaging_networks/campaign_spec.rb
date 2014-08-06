@@ -74,4 +74,36 @@ describe EngagingNetworks::Campaign do
       end
     end
   end
+
+  describe 'search' do
+    let(:request_path) { 'https://e-activist.com/ea-dataservice/data.service' }
+
+    before(:each) do
+      stub_get(request_path).with(:query => hash_including({:service => 'EaCampaignInfo'})).
+        to_return(:body => body, :status => status, :headers => {:content_type => "text/xml;charset=UTF-8"})
+    end
+
+    describe "search" do
+      let(:body) { fixture('EaCampaignInfo/success_array.xml') }
+      let(:status) { 200 }
+
+      it 'should find by name' do
+        c = en.campaign.search("API Test Campaign")
+        expect(c.campaignName).to eq('API Test Campaign')
+      end
+
+      it 'should find by name with only one record returned' do
+        c = en.campaign.search("API Test Campaign2")
+        expect(c.campaignName).to eq('API Test Campaign2')
+      end
+
+      it 'should return nil if nothing is found' do
+        c = en.campaign.search("Foobar")
+        expect(c).to eq(nil)
+      end
+    end
+
+    let(:body) { fixture('EaCampaignInfo/success_array.xml') }
+    let(:status) { 200 }
+  end
 end
