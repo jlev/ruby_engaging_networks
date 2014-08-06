@@ -40,6 +40,14 @@ action.job_id
 => '1234'
 ```
 
+Search for a campaign by name (exact match only)
+
+```ruby
+action = en.campaign.search "Foo"
+action.campaignName
+=> 'Foo'
+```
+
 check if supporter exists
 
 ```ruby
