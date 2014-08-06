@@ -8,16 +8,14 @@ module EngagingNetworks
       attr_reader :objects
 
       def initialize(data)
-        @objects = data['EaRow']['EaColumn'].inject({}) do |hash, item|
-          hash[item['name']] = item['__content__']
-          # TODO cast based on item['type']?
-          hash
+        @objects = data.inject([]) do |arr, row|
+          arr << EngagingNetworks::Response::Object.new(row)
         end
       end
 
       def each(&block)
         # TODO handle pagination somehow!
-        objects.each do |o|
+        @objects.each do |o|
           block.call(o)
         end
       end

@@ -17,9 +17,9 @@ module EngagingNetworks
           data = response.body['EaData']
 
           # check for multiple returned rows
-          if data.is_a? Array
+          if data.respond_to?('has_key?') && data.has_key?('EaRow') && data['EaRow'].is_a?(Array)
             @kind = :collection
-            @obj = EngagingNetworks::Response::Collection.new(data)
+            @obj = EngagingNetworks::Response::Collection.new(data['EaRow'])
           elsif data.respond_to?('has_key?') && data.has_key?('EaRow')
             @kind = :object
             @obj = EngagingNetworks::Response::Object.new(data['EaRow'])
