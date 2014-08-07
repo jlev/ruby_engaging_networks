@@ -14,7 +14,6 @@ module EngagingNetworks
       end
 
       def each(&block)
-        # TODO handle pagination somehow!
         @objects.each do |o|
           block.call(o)
         end

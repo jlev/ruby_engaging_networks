@@ -39,8 +39,6 @@ module EngagingNetworks
         nil
       end
     end
-    
-    # TODO, search by campaign name
 
   end
 end
