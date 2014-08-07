@@ -75,7 +75,7 @@ en.supporter.exists? 'email@example.com'
 Supporters by date
 
 ```
-en.supporter.export Date.today.strftime('%m%d%Y')
+en.supporter.export Date.new(2014,6,5)
 => [{...}]
 
 ```
