@@ -27,7 +27,7 @@ module EngagingNetworks
           @obj = EngagingNetworks::Response::Collection.new(rows_for(data))
         elsif object_response? data
           @kind = :object
-          @obj = EngagingNetworks::Response::Object.new(data['EaRow'])
+          @obj = EngagingNetworks::Response::Object.new(data['EaRow'] ? data['EaRow'] : data)
         else
           @kind = :empty
           @obj = nil
@@ -47,7 +47,7 @@ module EngagingNetworks
       end
 
       def object_response? data
-        data.respond_to?('has_key?') && data.has_key?('EaRow')
+        data.respond_to?('has_key?')
       end
 
       def rows_for data

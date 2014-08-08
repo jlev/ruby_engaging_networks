@@ -47,7 +47,7 @@ describe EngagingNetworks::Supporter do
         to_return(:body => body, :status => status, :headers => {:content_type => "text/xml;charset=UTF-8"})
     end
 
-    describe "supporter exists" do
+    describe "array of supporters" do
       let(:body) { fixture('SupporterData/aoxml_success_array.xml') }
       let(:status) { 200 }
 
@@ -55,6 +55,17 @@ describe EngagingNetworks::Supporter do
         resp = @en.supporter.export(Date.new(2014,7,7))
         expect(resp.obj.class).to eq(EngagingNetworks::Response::Collection)
         expect(resp.obj.objects.first.first_name).to eq("Foo")
+      end
+    end
+
+    describe "a single supporter" do
+      let(:body) { fixture('SupporterData/aoxml_success.xml') }
+      let(:status) { 200 }
+
+      it 'should return true' do
+        resp = @en.supporter.export(Date.new(2014,7,7))
+        expect(resp.obj.class).to eq(EngagingNetworks::Response::Object)
+        expect(resp.obj.first_name).to eq("Foo")
       end
     end
   end
