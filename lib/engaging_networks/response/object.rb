@@ -6,10 +6,14 @@ module EngagingNetworks
       attr_reader :fields
 
       def initialize(row)
-        @fields = row['EaColumn'].inject({}) do |hash, item|
-          hash[item['name']] = item['__content__']
-          # TODO cast based on item['type']?
-          hash
+        if row.has_key? 'EaColumn'
+          @fields = row['EaColumn'].inject({}) do |hash, item|
+            hash[item['name']] = item['__content__']
+            # TODO cast based on item['type']?
+            hash
+          end
+        else
+          @fields = row
         end
 
         # create accessors for each field

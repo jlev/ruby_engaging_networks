@@ -1,0 +1,40 @@
+<AOXmlResponse>
+  <rows>
+    <row>
+      <account_id>1</account_id>
+      <supporter_id>123456</supporter_id>
+      <supporter_email>foo@bar.com</supporter_email>
+      <supporter_create_date>2014-07-02</supporter_create_date>
+      <supporter_modified_date>2014-07-02</supporter_modified_date>
+      <mighty_local_id>0</mighty_local_id>
+      <type>DCF</type>
+      <id>Test Campaign</id>
+      <date>2014-07-07</date>
+      <time>12:12:12</time>
+      <status>P</status>
+      <data1></data1>
+      <email_address>foo@bar.com</email_address>
+      <first_name>Foo</first_name>
+      <last_name>Bar</last_name>
+      <city>Oakland</city>
+    </row>
+    <row>
+      <account_id>1</account_id>
+      <supporter_id>123456</supporter_id>
+      <supporter_email>foo@bar.com</supporter_email>
+      <supporter_create_date>2014-07-02</supporter_create_date>
+      <supporter_modified_date>2014-07-02</supporter_modified_date>
+      <mighty_local_id>0</mighty_local_id>
+      <type>DCF</type>
+      <id>Test Campaign</id>
+      <date>2014-07-07</date>
+      <time>12:12:12</time>
+      <status>P</status>
+      <data1></data1>
+      <email_address>foo@bar.com</email_address>
+      <first_name>Foo</first_name>
+      <last_name>Bar</last_name>
+      <city>Oakland</city>
+    </row>
+  </rows>
+</AOXmlResponse>

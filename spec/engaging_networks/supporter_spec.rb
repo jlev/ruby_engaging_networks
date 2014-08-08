@@ -38,4 +38,24 @@ describe EngagingNetworks::Supporter do
       end
     end
   end
+
+  describe "export" do
+    let(:request_path) { 'https://e-activist.com/ea-dataservice/export.service' }
+
+    before(:each) do
+      stub_get(request_path).with(:query => "startDate=07072014&token=TEST_PRIVATE_TOKEN").
+        to_return(:body => body, :status => status, :headers => {:content_type => "text/xml;charset=UTF-8"})
+    end
+
+    describe "supporter exists" do
+      let(:body) { fixture('SupporterData/aoxml_success_array.xml') }
+      let(:status) { 200 }
+
+      it 'should return true' do
+        resp = @en.supporter.export(Date.new(2014,7,7))
+        expect(resp.obj.class).to eq(EngagingNetworks::Response::Collection)
+        expect(resp.obj.objects.first.first_name).to eq("Foo")
+      end
+    end
+  end
 end
