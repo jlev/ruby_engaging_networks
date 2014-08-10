@@ -61,7 +61,14 @@ en.supporter.exists? 'email@example.com'
 create an action
 
 ```ruby
-en.action.create(123, 456, 789, {'First name'=>'John', 'Last name'=>'Public', 'City'=>'New York', 'Email address'=>'email@example.com'})
+action = en.action.create(client_id: 123, campaign_id: 123, form_id: 123, first_name: 'George',
+                                        last_name: 'Washington', city: 'Detroit', country: country_code, country_name: 'United States',
+                                        email: 'george@washington.com', language_code: 'EN', address_line_1: 'address1', address_line_2: 'address2',
+                                        post_code: '02052', state: 'MI', mobile_phone: '518-207-6768', originating_action: 'xxx')
+
+action.valid?
+=> true
+action.result
 => true
 ```
 

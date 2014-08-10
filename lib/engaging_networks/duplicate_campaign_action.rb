@@ -1,5 +1,5 @@
 module EngagingNetworks
-  class DuplicateAction < ActionModel
+  class DuplicateCampaignAction < ActionModel
     # formatting / validation class for Duplicate Engaging Network Template Campaign (Endpoint)
 
     attr_accessor :reference_name, :token, :csv_string, :csv_file_name, :format_name, :broadcast_name, :broadcast_template_id, :segment_name, :segment_id, :template_campaign_id, :new_campaign_reference_name, :job_id

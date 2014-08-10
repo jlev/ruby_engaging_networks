@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe EngagingNetworks::DuplicateAction do
-  subject { EngagingNetworks::DuplicateAction.new(reference_name: 'reference', token: 'abc123', csv_string: fixture('api-supporter-template.csv'), csv_file_name: 'api-supporter-template.csv', format_name: 'format') }
+describe EngagingNetworks::DuplicateCampaignAction do
+  subject { EngagingNetworks::DuplicateCampaignAction.new(reference_name: 'reference', token: 'abc123', csv_string: fixture('api-supporter-template.csv'), csv_file_name: 'api-supporter-template.csv', format_name: 'format') }
 
   specify { expect(subject.valid?).to be_truthy}
 

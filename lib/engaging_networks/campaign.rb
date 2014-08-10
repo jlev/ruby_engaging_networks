@@ -9,7 +9,7 @@ module EngagingNetworks
     def duplicate(a)
       # accept either hashes or objects as input
       action = if a.is_a?(Hash)
-            DuplicateAction.new(a)
+            DuplicateCampaignAction.new(a)
           else
             a
           end
