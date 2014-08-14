@@ -10,12 +10,12 @@ module EngagingNetworks
           token_type: EngagingNetworks::Request::MultiTokenAuthentication::PRIVATE})
     end
 
-    def create(a)
+    def create(action_hash, additional_options = {})
       # accept either hashes or objects as input
-      action = if a.is_a?(Hash)
+      action = if action_hash.is_a?(Hash)
                  ActionCreateAction.new(a)
                else
-                 a
+                 action_hash
                end
 
       if action.valid?
@@ -41,6 +41,7 @@ module EngagingNetworks
         post_params = post_params.merge(ajax_form_params)
         post_params = post_params.merge(client_params)
         post_params = post_params.merge(action.to_params)
+        post_params = post_params.merge(additional_options)
 
         # call post request, with get param ?format=json
         rsp = client.post_request_with_get_params(action_path, {'format'=>'json'}, post_params)
