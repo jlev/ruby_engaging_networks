@@ -24,7 +24,11 @@ module EngagingNetworks
           'ea.AJAX.submit' => true,
           'ea.submitted.page' => 1,
           'ea_requested_action' => 'ea_submit_user_form',
-          'ea_javascript_enabled' => true
+          'ea_javascript_enabled' => true,
+          'ea.campaign.mode' => 'DEMO',
+          'ea.retain.account.session.error' => true,
+          'ea.clear.campaign.session.id' => true,
+          'v' => 'c%3AshowBuild'
         }
 
         # clientId, campaignId, formId
