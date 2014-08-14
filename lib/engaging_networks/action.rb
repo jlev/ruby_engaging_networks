@@ -13,7 +13,7 @@ module EngagingNetworks
     def create(action_hash, additional_options = {})
       # accept either hashes or objects as input
       action = if action_hash.is_a?(Hash)
-                 ActionCreateAction.new(a)
+                 ActionCreateAction.new(action_hash)
                else
                  action_hash
                end
