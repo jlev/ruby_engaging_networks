@@ -22,10 +22,12 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{A wrapper for the Engaging Networks API}
   gem.description = %Q{Gem for interacting with the Engaging Networks API}
   gem.email = "josh@levinger.net"
-  gem.authors = ["Josh Levinger"]
+  gem.authors = ["Josh Levinger", "Nathan Woodhull"]
+  
   # dependencies defined in Gemfile
   gem.add_dependency 'vertebrae'
   gem.add_dependency 'json'
+  gem.add_development_dependency 'jeweler'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'pry-debugger'
   gem.add_development_dependency 'guard'

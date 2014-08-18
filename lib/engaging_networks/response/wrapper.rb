@@ -13,21 +13,45 @@ module EngagingNetworks
       def initialize(response)
         @response = response
 
-        if response.body.respond_to?('has_key?') && response.body.has_key?('EaData')
+        if ao_xml_response?
+          data = response.body['AOXmlResponse']['rows']['row']
+        elsif ea_data_response?
           data = response.body['EaData']
-
-          # check for multiple returned rows
-          if data.is_a? Array
-            @kind = :collection
-            @obj = EngagingNetworks::Response::Collection.new(data)
-          elsif data.respond_to?('has_key?') && data.has_key?('EaRow')
-            @kind = :object
-            @obj = EngagingNetworks::Response::Object.new(data['EaRow'])
-          else
-            @kind = :empty
-            @obj = nil
-          end
+        else
+          return
         end
+
+        # check for multiple returned rows
+        if collection_response? data
+          @kind = :collection
+          @obj = EngagingNetworks::Response::Collection.new(rows_for(data))
+        elsif object_response? data
+          @kind = :object
+          @obj = EngagingNetworks::Response::Object.new(data['EaRow'] ? data['EaRow'] : data)
+        else
+          @kind = :empty
+          @obj = nil
+        end
+      end
+
+      def ao_xml_response?
+        @response.body.respond_to?('has_key?') && @response.body.has_key?('AOXmlResponse')
+      end
+
+      def ea_data_response?
+        @response.body.respond_to?('has_key?') && @response.body.has_key?('EaData')
+      end
+
+      def collection_response? data
+        data.is_a?(Array) || (data.respond_to?('has_key?') && data.has_key?('EaRow') && data['EaRow'].is_a?(Array))
+      end
+
+      def object_response? data
+        data.respond_to?('has_key?')
+      end
+
+      def rows_for data
+        data.is_a?(Array) ? data : data['EaRow']
       end
 
       def collection?

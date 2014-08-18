@@ -9,12 +9,14 @@ module EngagingNetworks
       def call(env)
         # decode url param string to hash
         if env[:url].query
-          params = URI.decode_www_form(env[:url].query).to_h
+          params = Hash[URI.decode_www_form(env[:url].query)]
+        elsif env[:body]
+          params = env[:body]
         else
           params = {}
         end
 
-        if params.has_key? 'token_type'
+        if env[:method] == :get && params.has_key?("token_type")
           token_type = params['token_type'].to_i #because it got stringified in the form
 
           # insert necessary token
@@ -31,8 +33,20 @@ module EngagingNetworks
 
           # encode and return to env
           env[:url].query = URI.encode_www_form(params)
-        else
-          # no token_type passed, ignore
+        elsif env[:method] == :post && params.has_key?(:token_type)
+          token_type = params[:token_type].to_i
+
+          if token_type == MultiTokenAuthentication::PRIVATE
+            params[:token] = @private_token
+          elsif token_type == MultiTokenAuthentication::PUBLIC
+            params[:token] = @public_token
+          else
+            raise ArgumentError, "invalid token_type #{token_type}"
+          end
+
+          params.delete(:token_type)
+
+          env[:body] = params
         end
 
         @app.call env

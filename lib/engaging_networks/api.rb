@@ -44,6 +44,27 @@ module EngagingNetworks
       end
     end
 
+    def request_with_options(method, path, params, options) # :nodoc:
+      if !::Vertebrae::Request::METHODS.include?(method)
+        raise ArgumentError, "unknown http method: #{method}"
+      end
+      connection.options = default_options.merge(options)
+      path =  connection.configuration.prefix + '/' + path
+
+      ::Vertebrae::Base.logger.debug "EXECUTED: #{method} - #{path} with #{params} and #{options}"
+
+      connection.connection.send(method) do |request|
+
+        case method.to_sym
+          when *(::Vertebrae::Request::METHODS - ::Vertebrae::Request::METHODS_WITH_BODIES)
+            request.url(path, params)
+          when *::Vertebrae::Request::METHODS_WITH_BODIES
+            request.path = path
+            request.body = params
+        end
+      end
+    end
+
     def post_request_with_get_params(path, get_params, post_data, options={}) # :nodoc:
       method = :post
 
@@ -68,6 +89,5 @@ module EngagingNetworks
         end
       end
     end
-
   end
 end

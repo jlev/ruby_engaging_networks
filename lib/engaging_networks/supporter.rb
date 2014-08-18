@@ -13,7 +13,7 @@ module EngagingNetworks
 
     def export(startDate)
       # startDate must be MMDDYYY and within last 45 days
-      client.get_request(export_path, {startDate: startDate,
+      client.get_request(export_path, {startDate: startDate.strftime("%m%d%Y"),
           token_type: EngagingNetworks::Request::MultiTokenAuthentication::PRIVATE})
 
       # TODO, filter for specific fields
