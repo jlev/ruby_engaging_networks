@@ -2,7 +2,8 @@
 
 A ruby binding for the Engaging Networks API
 
-[![Build Status](https://travis-ci.org/controlshift/ruby_engaging_networks.svg)](https://travis-ci.org/controlshift/ruby_engaging_networks)
+___This fork is no longer maintained.___
+Please see [controlshift/ruby_engaging_networks](https://github.com/controlshift/ruby_engaging_networks) for an updated version.
 
 ## Usage
 
