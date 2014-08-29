@@ -17,7 +17,7 @@ module EngagingNetworks
                 SD SR SJ SZ SE CH SY TW TJ TZ TH TL TG TK TO TT TN TR TM TC TV UG UA AE GB US UM UY UZ VU VA VE VN VG VI
                 WF EH YE ZM ZW) }  # ISO2 country codes
 
-    validates :first_name, :last_name, :city, :email, presence: true
+    validates :first_name, :last_name, :email, presence: true
 
     def to_params
       {
