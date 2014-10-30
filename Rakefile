@@ -27,11 +27,8 @@ Jeweler::Tasks.new do |gem|
   # dependencies defined in Gemfile
   gem.add_dependency 'vertebrae'
   gem.add_dependency 'json'
-  gem.add_development_dependency 'jeweler'
-  gem.add_development_dependency 'pry'
-  gem.add_development_dependency 'pry-debugger'
-  gem.add_development_dependency 'guard'
-  gem.add_development_dependency 'guard-rspec'
+  gem.add_dependency 'activesupport'
+  gem.add_dependency 'activemodel'
 
 end
 Jeweler::RubygemsDotOrgTasks.new
