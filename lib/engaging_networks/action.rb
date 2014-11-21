@@ -49,9 +49,15 @@ module EngagingNetworks
         body = rsp.body
 
         # parse json for first form field, apisuccess div
-        success_div = JSON.parse(body)['pages'][0]['form']['fields'][0]['value']
-        # TODO, this seems really fragile...
-        action.result = Nokogiri::HTML(success_div).css('#apisuccess').text == "success"
+        if body =~ /apisuccess/
+          success_div = JSON.parse(body)['pages'][0]['form']['fields'][0]['value']
+
+          # TODO, this seems really fragile...
+          action.result = Nokogiri::HTML(success_div).css('#apisuccess').text == "success"
+        else
+          raise "Engaging Networks responded with: #{ body }"
+        end
+
         action
       else
         action
