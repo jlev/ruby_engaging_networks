@@ -2,6 +2,8 @@ require 'json'
 require 'nokogiri'
 
 module EngagingNetworks
+  class InvalidActionError < StandardError ; end
+
   class Action < Base
     # individual get unavailable
     # need to export and search actions
@@ -60,7 +62,7 @@ module EngagingNetworks
             action.result = true
           end
         else
-          raise "Engaging Networks responded with: #{ body }"
+          raise EngagingNetworks::InvalidActionError.new("Engaging Networks responded with: #{ body }")
         end
 
         action

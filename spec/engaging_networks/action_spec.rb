@@ -33,7 +33,7 @@ describe EngagingNetworks::Action do
       let(:body) { fixture('action/error.json') }
 
       it 'should raise' do
-        expect { en.action.create(input_hash) }.to raise_error
+        expect { en.action.create(input_hash) }.to raise_error(EngagingNetworks::InvalidActionError)
       end
     end
   end
