@@ -30,7 +30,7 @@ describe EngagingNetworks::Action do
     end
 
     describe 'failure' do
-      let(:body) { '{failure: "explode"}' }
+      let(:body) { fixture('action/error.json') }
 
       it 'should raise' do
         expect { en.action.create(input_hash) }.to raise_error
