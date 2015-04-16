@@ -25,11 +25,6 @@ Jeweler::Tasks.new do |gem|
   gem.authors = ["Josh Levinger", "Nathan Woodhull"]
   
   # dependencies defined in Gemfile
-  gem.add_dependency 'vertebrae'
-  gem.add_dependency 'json'
-  gem.add_dependency 'activesupport'
-  gem.add_dependency 'activemodel'
-
 end
 Jeweler::RubygemsDotOrgTasks.new
 
