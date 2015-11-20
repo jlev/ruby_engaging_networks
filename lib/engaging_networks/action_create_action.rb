@@ -1,7 +1,7 @@
 module EngagingNetworks
   class ActionCreateAction < ActionModel
     attr_accessor :client_id, :campaign_id, :form_id, :title, :first_name, :last_name, :city, :country, :country_name,  :email, :address_line_1,
-                  :address_line_2, :post_code, :state, :mobile_phone, :originating_action, :result, :raw_response
+                  :address_line_2, :post_code, :state, :mobile_phone, :originating_action, :additional_fields, :result, :raw_response
 
     validates :client_id,  presence: true, numericality: true
     validates :campaign_id, presence: true, numericality: true
@@ -33,7 +33,7 @@ module EngagingNetworks
         'State' => state,
         'Mobile Phone' => mobile_phone,
         'Originating Action' => originating_action
-      }
+      }.merge(additional_fields)
     end
   end
 end
