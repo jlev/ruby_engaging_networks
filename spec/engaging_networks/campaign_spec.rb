@@ -70,7 +70,7 @@ describe EngagingNetworks::Campaign do
       let(:body) { fixture('import.service/error.txt') }
 
       it 'should raise an exception' do
-        expect { en.campaign.duplicate(params) }.to raise_error
+        expect { en.campaign.duplicate(params) }.to raise_error(StandardError)
       end
     end
   end

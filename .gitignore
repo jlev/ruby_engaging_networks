@@ -48,5 +48,4 @@ pkg
 # For rubinius:
 #*.rbc
 .idea
-Gemfile.lock
 example.rb
