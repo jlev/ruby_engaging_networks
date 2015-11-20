@@ -23,6 +23,12 @@ describe EngagingNetworks::ActionCreateAction do
 
   describe 'to_params' do
     context 'no additional fields' do
+      let(:additional_fields) { nil }
+
+      specify { expect(subject.to_params['First name']).to eq('George') }
+    end
+
+    context 'no additional fields' do
       let(:additional_fields) { {} }
 
       specify { expect(subject.to_params['First name']).to eq('George') }

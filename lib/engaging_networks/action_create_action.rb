@@ -19,7 +19,7 @@ module EngagingNetworks
     validates :first_name, :last_name, :email, presence: true
 
     def to_params
-      {
+      hsh = {
         'Title' => title,
         'Email address' => email,
         'First name' => first_name,
@@ -33,7 +33,12 @@ module EngagingNetworks
         'State' => state,
         'Mobile Phone' => mobile_phone,
         'Originating Action' => originating_action
-      }.merge(additional_fields)
+      }
+      if additional_fields
+        hsh.merge(additional_fields)
+      else
+        hsh
+      end
     end
   end
 end
