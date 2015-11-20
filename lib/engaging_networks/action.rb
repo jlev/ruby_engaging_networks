@@ -54,7 +54,7 @@ module EngagingNetworks
         # parse json for first form field, apisuccess div
         if json_body['messages'].empty? || body =~ /apisuccess/
           if body =~ /apisuccess/
-            success_div = ['pages'][0]['form']['fields'][0]['value']
+            success_div = json_body['pages'][0]['form']['fields'][0]['value']
 
             # TODO, this seems really fragile...
             action.result = Nokogiri::HTML(success_div).css('#apisuccess').text == "success"

@@ -25,8 +25,17 @@ describe EngagingNetworks::Action do
         to_return(:body => body, :status => status, :headers => {:content_type => "text/json;charset=UTF-8"})
     end
 
-    describe 'success' do
+    describe 'success: response format A' do
       let(:body) { fixture('action/success.json') }
+
+      it 'should create an action' do
+        c = en.action.create(input_hash)
+        expect(c.result).to be_truthy
+      end
+    end
+
+    describe 'success: response format B' do
+      let(:body) { fixture('action/api_success.json') }
 
       it 'should create an action' do
         c = en.action.create(input_hash)
