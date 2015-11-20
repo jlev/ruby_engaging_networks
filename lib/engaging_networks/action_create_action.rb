@@ -1,13 +1,12 @@
 module EngagingNetworks
   class ActionCreateAction < ActionModel
-    attr_accessor :client_id, :campaign_id, :form_id, :title, :first_name, :last_name, :city, :country, :country_name,  :email, :language_code, :address_line_1,
+    attr_accessor :client_id, :campaign_id, :form_id, :title, :first_name, :last_name, :city, :country, :country_name,  :email, :address_line_1,
                   :address_line_2, :post_code, :state, :mobile_phone, :originating_action, :result, :raw_response
 
     validates :client_id,  presence: true, numericality: true
     validates :campaign_id, presence: true, numericality: true
     validates :form_id, presence: true, numericality: true
 
-    validates :language_code, presence: true, inclusion: { in: %w(AR ES EN FR HI ID TL PT VI) } # language codes provided by WalkFree, may not be global
     validates :country, inclusion: { in: %w(AX AF AL DZ AS AD AO AI AQ AG AR AM AW AU AT AZ BS BH BD BB BY BE BZ BJ BM
                 BT BO BA BW BV BR IO BN BG BF BI KH CM CA CV KY CF TD CL CN CX CC CO KM CD CG CK CR CI HR CU CY CZ DK DJ
                 DM DO EC EG SV GQ ER EE ET FK FO FJ FI FR GF PF TF GA GM GE DE GH GI GR GL GD GP GU GT GN GW GY HT HM HN
@@ -33,8 +32,7 @@ module EngagingNetworks
         'Post Code' => post_code,
         'State' => state,
         'Mobile Phone' => mobile_phone,
-        'Originating Action' => originating_action,
-        "Opt In - #{language_code}" => 'y'
+        'Originating Action' => originating_action
       }
     end
   end
