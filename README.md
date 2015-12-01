@@ -65,6 +65,7 @@ action = en.action.create(client_id: 123, campaign_id: 123, form_id: 123, first_
                           last_name: 'Washington', city: 'Detroit', country: country_code, country_name: 'United States',
                           email: 'george@washington.com', address_line_1: 'address1', address_line_2: 'address2',
                           post_code: '02052', state: 'MI', mobile_phone: '518-207-6768', originating_action: 'xxx',
+                          opt_in: true,
                           additional_fields: {'Some Custom Field Name': 'field value'})
 
 action.valid?
@@ -72,6 +73,8 @@ action.valid?
 action.result
 => true
 ```
+
+The truth of the opt_in field determines whether or not the member is opted in.
 
 And then check again, and now supporter exists!
 
