@@ -4,6 +4,10 @@ A ruby binding for the Engaging Networks API
 
 [![Build Status](https://travis-ci.org/controlshift/ruby_engaging_networks.svg)](https://travis-ci.org/controlshift/ruby_engaging_networks)
 
+This API client wraps undocumented features of the Engaging Networks platform in ruby bindings that can be used to approximate
+API-ish behavior. It does not use the [ENS API](https://speca.io/engagingnetworks/engaging-network-services?key=726cda99f0551ef286486bb847f5fb5d) and is intended
+as a stopgap until EN builds out a full API.
+
 ## Usage
 
 create a client object
