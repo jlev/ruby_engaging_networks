@@ -97,6 +97,6 @@ en.supporter.export Date.new(2014,6,5)
 
 ## Copyright
 
-Copyright (c) 2014 ControlShift Ltd. See LICENSE.txt for
+Copyright (c) 2015 ChangeSprout Inc. See LICENSE.txt for
 further details.
 
