@@ -1,7 +1,14 @@
 module EngagingNetworks
   module Scrape
     class Client
+      attr_accessor :username, :password
+
       HOST = 'www.e-activist.com'
+
+      def initialize(username:, password:)
+        self.username = username
+        self.password = password
+      end
 
       def login
         agent.get("https://#{HOST}/ea-account/index.jsp") do |page|
@@ -52,13 +59,6 @@ module EngagingNetworks
         end
       end
 
-      def username
-        ENV['EN_USERNAME']
-      end
-
-      def password
-        ENV['EN_PASSWORD']
-      end
     end
   end
  end
