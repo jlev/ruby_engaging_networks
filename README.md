@@ -49,7 +49,7 @@ action.job_id
 ```
 
 Create a campaign via screen scrape
-```
+```ruby
 id = en.campaign.create(name: 'ControlShift test 2', description: 'description')
 # returns the campaign id
 ```
