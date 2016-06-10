@@ -22,7 +22,7 @@ module EngagingNetworks
       def create_campaign(name:, description:, ajax_enabled: true)
         login
 
-        campaign_info = {}
+        campaign_id = nil
 
         agent.get("https://#{HOST}/ea-account/auth/") do |page|
           new_campaign_form = agent.click(page.link_with(:text => /Create a Campaign/))
@@ -43,9 +43,9 @@ module EngagingNetworks
 
           campaign_list = agent.click(new_campaign_result.link_with(:text => /Manage Campaigns/))
           campaign_form = campaign_list.form_with(action: 'https://www.e-activist.com/ea-account/auth/campaign.jsp')
-          campaign_info[:id] = campaign_form.field_with(name: 'ea.campaign.id').value
+          campaign_id = campaign_form.field_with(name: 'ea.campaign.id').value
         end
-        campaign_info
+        campaign_id
       end
 
       def build_form(id)
