@@ -5,6 +5,10 @@ A ruby binding for the Engaging Networks API
 ___This fork is no longer maintained.___
 Please see [controlshift/ruby_engaging_networks](https://github.com/controlshift/ruby_engaging_networks) for an updated version.
 
+This API client wraps undocumented features of the Engaging Networks platform in ruby bindings that can be used to approximate
+API-ish behavior. It does not use the [ENS API](https://speca.io/engagingnetworks/engaging-network-services?key=726cda99f0551ef286486bb847f5fb5d) and is intended
+as a stopgap until EN builds out a full API.
+
 ## Usage
 
 create a client object
@@ -45,6 +49,12 @@ action.job_id
 => '1234'
 ```
 
+Create a campaign via screen scrape
+```ruby
+id = en.campaign.create(name: 'ControlShift test 2', description: 'description')
+# returns the campaign id
+```
+
 Search for a campaign by name (exact match only)
 
 ```ruby
@@ -63,15 +73,19 @@ create an action
 
 ```ruby
 action = en.action.create(client_id: 123, campaign_id: 123, form_id: 123, first_name: 'George',
-                                        last_name: 'Washington', city: 'Detroit', country: country_code, country_name: 'United States',
-                                        email: 'george@washington.com', language_code: 'EN', address_line_1: 'address1', address_line_2: 'address2',
-                                        post_code: '02052', state: 'MI', mobile_phone: '518-207-6768', originating_action: 'xxx')
+                          last_name: 'Washington', city: 'Detroit', country: country_code, country_name: 'United States',
+                          email: 'george@washington.com', address_line_1: 'address1', address_line_2: 'address2',
+                          post_code: '02052', state: 'MI', mobile_phone: '518-207-6768', originating_action: 'xxx',
+                          opt_in: true,
+                          additional_fields: {'Some Custom Field Name': 'field value'})
 
 action.valid?
 => true
 action.result
 => true
 ```
+
+The truth of the opt_in field determines whether or not the member is opted in.
 
 And then check again, and now supporter exists!
 
@@ -90,6 +104,6 @@ en.supporter.export Date.new(2014,6,5)
 
 ## Copyright
 
-Copyright (c) 2014 ControlShift Ltd. See LICENSE.txt for
+Copyright (c) 2015 ChangeSprout Inc. See LICENSE.txt for
 further details.
 

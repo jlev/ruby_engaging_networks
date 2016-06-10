@@ -4,7 +4,7 @@ module EngagingNetworks
     def data(email)
       # data.service only returns Y/N values on which fields contain data, not actual data contained
       client.get_request(data_path, {service: 'SupporterData', email: email,
-          token_type: EngagingNetworks::Request::MultiTokenAuthentication::PUBLIC})
+          token_type: EngagingNetworks::Request::MultiTokenAuthentication::PUBLIC, time: Time.now.to_i}) # cache bust the time parameter.
     end
 
     def exists?(email)

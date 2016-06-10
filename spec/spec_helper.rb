@@ -1,8 +1,8 @@
+$LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+
 require 'rspec'
 require 'webmock/rspec'
-
-$LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
-
 require 'engaging_networks'
 
 RSpec.configure do |config|

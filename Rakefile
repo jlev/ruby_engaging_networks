@@ -25,14 +25,6 @@ Jeweler::Tasks.new do |gem|
   gem.authors = ["Josh Levinger", "Nathan Woodhull"]
   
   # dependencies defined in Gemfile
-  gem.add_dependency 'vertebrae'
-  gem.add_dependency 'json'
-  gem.add_development_dependency 'jeweler'
-  gem.add_development_dependency 'pry'
-  gem.add_development_dependency 'pry-debugger'
-  gem.add_development_dependency 'guard'
-  gem.add_development_dependency 'guard-rspec'
-
 end
 Jeweler::RubygemsDotOrgTasks.new
 

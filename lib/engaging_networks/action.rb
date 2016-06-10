@@ -2,6 +2,8 @@ require 'json'
 require 'nokogiri'
 
 module EngagingNetworks
+  class InvalidActionError < StandardError ; end
+
   class Action < Base
     # individual get unavailable
     # need to export and search actions
@@ -47,11 +49,22 @@ module EngagingNetworks
         rsp = client.post_request_with_get_params(action_path, {'format'=>'json'}, post_params)
         action.raw_response = rsp
         body = rsp.body
+        json_body = JSON.parse(body)
 
         # parse json for first form field, apisuccess div
-        success_div = JSON.parse(body)['pages'][0]['form']['fields'][0]['value']
-        # TODO, this seems really fragile...
-        action.result = Nokogiri::HTML(success_div).css('#apisuccess').text == "success"
+        if json_body['messages'].empty? || body =~ /apisuccess/
+          if body =~ /apisuccess/
+            success_div = json_body['pages'][0]['form']['fields'][0]['value']
+
+            # TODO, this seems really fragile...
+            action.result = Nokogiri::HTML(success_div).css('#apisuccess').text == "success"
+          else
+            action.result = true
+          end
+        else
+          raise EngagingNetworks::InvalidActionError.new("Engaging Networks responded with: #{ body }")
+        end
+
         action
       else
         action
